@@ -1,3 +1,4 @@
+const { query } = require('express');
 const express = require('express');
 const app = express();
 
@@ -9,10 +10,27 @@ const PORT = process.env.PORT || 4001;
 app.use(express.static('public'));
 
 app.get('/api/quotes/random', (req, res, next) => {
-  // console.log(getRandomElement(quotes));
+  
   const responseBody = {quote: getRandomElement(quotes) }
+  console.log(responseBody);
   res.send(responseBody);
 })
+
+app.get('/api/quotes', (req, res, next) => {
+  const queryPerson = req.query.person
+  const requestedQuotes = [];
+  if (!queryPerson) {
+    res.send(quotes);
+  } else {
+    quotes.forEach(item => {
+      if (queryPerson === item.person) {
+        requestedQuotes.push(item);
+      }
+    })
+    res.send( {quotes: requestedQuotes} );
+  }
+})
+
 
 
 app.listen(PORT, () => {

@@ -1,17 +1,5 @@
 # README.md
 
-4. Your API should have a GET /api/quotes/random route. This route should send back a random quote from the quotes data. The response body should have the following shape:
-
-The response body should have the following shape:
-```javascript
-{
-  quote: {
-    quote: 'bleh bleh bleh',
-    person: 'Homer Simpson',
-  }
-}
-```
-
 5. Your API should have a GET /api/quotes route. This route should return all quotes from the data if the request has no query params.
 
 If there is a query string with a person attribute, the route should return all quotes said by the same person. For instance, the data set has multiple quotes for Grace Hopper, so GET /api/quotes?person=Grace Hopper should return an array of only those quotes. If there are no quotes for the requested person, send back an empty array.
@@ -20,7 +8,12 @@ The response body should have the following shape for all GET /api/quotes reques
 
 ```javascript
 {
-  quotes: [ /* Array of requested quotes */ ]
+  quotes: [ 
+    {
+      "quote": "BLEH BLEH BLEH",
+      "person" "Someone",
+    },
+  ]
 }
 ```
 
